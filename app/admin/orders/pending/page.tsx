@@ -12,7 +12,7 @@ export default function PendingOrdersPage() {
 
   const pendingOrders = orders.filter(order => 
     order.status === OrderStatus.Pending &&
-    (order.customerName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (order.customerName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
      order.id.toString().includes(searchTerm))
   );
 
@@ -119,7 +119,7 @@ export default function PendingOrdersPage() {
             <div className="ml-4">
               <h3 className="text-lg font-semibold text-red-900">
                 {pendingOrders.filter(order => 
-                  Math.floor((Date.now() - new Date(order.orderDate).getTime()) / (1000 * 60 * 60 * 24)) >= 3
+                  Math.floor((Date.now() - new Date(order.createdAt).getTime()) / (1000 * 60 * 60 * 24)) >= 3
                 ).length}
               </h3>
               <p className="text-red-700">Urgent (3+ days)</p>
@@ -148,7 +148,7 @@ export default function PendingOrdersPage() {
             </div>
             <div className="ml-4">
               <h3 className="text-lg font-semibold text-green-900">
-                {new Set(pendingOrders.map(order => order.customerId)).size}
+                {new Set(pendingOrders.map(order => order.customerName)).size}
               </h3>
               <p className="text-green-700">Unique Customers</p>
             </div>
@@ -211,7 +211,7 @@ export default function PendingOrdersPage() {
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
               {pendingOrders.map((order) => {
-                const priority = getPriorityLevel(order.orderDate, order.totalAmount);
+                const priority = getPriorityLevel(order.createdAt, order.totalAmount);
                 return (
                   <tr key={order.id} className="hover:bg-gray-50">
                     <td className="px-6 py-4 whitespace-nowrap">
@@ -221,16 +221,16 @@ export default function PendingOrdersPage() {
                         </div>
                         <div>
                           <div className="text-sm font-medium text-gray-900">#{order.id}</div>
-                          <div className="text-sm text-gray-500">{order.items.length} items</div>
+                          <div className="text-sm text-gray-500">{order.orderItems.length} items</div>
                         </div>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm font-medium text-gray-900">{order.customerName}</div>
-                      <div className="text-sm text-gray-500">ID: {order.customerId}</div>
+                      <div className="text-sm font-medium text-gray-900">{order.customerName || 'Unknown Customer'}</div>
+                      <div className="text-sm text-gray-500">{order.customerPhone || order.customerEmail || ''}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                      {formatDate(order.orderDate)}
+                      {formatDate(order.createdAt)}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                       {formatCurrency(order.totalAmount)}
