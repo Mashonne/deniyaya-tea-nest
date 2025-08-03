@@ -56,6 +56,15 @@ export default function SignInForm() {
           <p className="text-sm text-red-800">{error}</p>
         </div>
       )}
+       <h3 className="text-sm font-medium text-blue-800 mb-2">
+          Test Credentials:
+        </h3>
+        <div className="text-sm text-blue-700 space-y-1">
+          <p>
+            <strong>Email:</strong> admin@deniyaya.com |{" "}
+            <strong>Password:</strong> admin123
+          </p>
+          </div>
       
       <div className="space-y-4">
         {/* Email Input */}
