@@ -109,9 +109,16 @@ export default function Home() {
                 Admin
               </a>
             </div>
+            <div className=" flex flex-row gap-4">
+              <a href="/customer/signin" className="text-gray-600 hover:text-green-600 transition">
+                <button className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition">
+                  Log in
+                </button>
+              </a>
             <button className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition">
               Order Now
             </button>
+            </div>
           </div>
         </div>
       </nav>
@@ -223,14 +230,14 @@ export default function Home() {
                   </div>
                   <div className="p-6">
                     <div className="flex justify-between items-start mb-2">
-                      <h3 className="text-lg font-semibold text-gray-800">
+                      <h3 className="text-lg font-semibold text-gray-800 h-16">
                         {product.name}
                       </h3>
-                      <span className="text-sm bg-green-100 text-green-800 px-2 py-1 rounded-full">
+                      <span className="text-sm bg-green-100 text-green-800 px-2 py-1 rounded-full text-nowrap h-8">
                         {product.type}
                       </span>
                     </div>
-                    <p className="text-gray-600 text-sm mb-4">
+                    <p className="text-gray-600 text-sm mb-4 h-10">
                       {product.description}
                     </p>
                     <div className="flex justify-between items-center">
