@@ -193,6 +193,7 @@ export default function SignInForm() {
             "Sign in"
           )}
         </button>
+        <button className=" hover:bg-green-500 rounded-lg hover:border-none text-black border px-3 py-1" onClick={() => router.push("/")}>Go Home</button>
       </form>
     </div>
   );
