@@ -102,6 +102,12 @@ export default function Home() {
               >
                 Contact
               </a>
+              <a
+                href="/admin/signin"
+                className="text-gray-600 hover:text-green-600 transition"
+              >
+                Admin
+              </a>
             </div>
             <button className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition">
               Order Now
@@ -377,11 +383,23 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p>&copy; 2024 Deniyaya Tea Factory. All rights reserved.</p>
-          <p className="text-gray-400 mt-2">
-            Crafting the finest Ceylon tea since 1950
-          </p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="text-center md:text-left">
+              <p>&copy; 2024 Deniyaya Tea Factory. All rights reserved.</p>
+              <p className="text-gray-400 mt-2">
+                Crafting the finest Ceylon tea since 1950
+              </p>
+            </div>
+            <div className="mt-4 md:mt-0">
+              <a
+                href="/admin/signin"
+                className="text-gray-400 hover:text-white transition text-sm"
+              >
+                Staff Login
+              </a>
+            </div>
+          </div>
         </div>
       </footer>
     </div>
